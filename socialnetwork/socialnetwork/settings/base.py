@@ -4,10 +4,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
-# SECRET_KEY = 'u!o14+n-n=p%$%um3uq)boiw@i+g%k)$pyvi_zuc&tl($eu=v6'
-
-# DEBUG = True
-
 ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
@@ -89,8 +85,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
-
-MEDIA_URL = '/media/'
 
 LOGIN_EXEMPT_URLS = (
     r'^$',
