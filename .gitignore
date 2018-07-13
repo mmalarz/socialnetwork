@@ -1,3 +1,9 @@
+# Project specific files
+env/
+socialnetwork/*/migrations/
+socialnetwork/.idea/
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
