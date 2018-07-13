@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Socialnetwork is a place to meet new people and share thoughts with them">
+    <meta name="keywords" content="socialnetwork, thoughts, new ideas, people, meetings, new friendships">
+
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="Shortcut icon" href="{% static "images/people.png" %}">
+    <link rel="stylesheet" href="{% static "css/materialize.css" %}">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+<div class="navbar-fixed">
+    <nav>
+        <div class="nav-wrapper">
+            <a href="{% url "posts:post_list" %}" class="brand-logo logo" id="small-logo"><i class="large material-icons">people</i>Socialnetwork</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+            <!-- Desktop navigation -->
+            <ul class="right hide-on-med-and-down">
+                {% if request.user.is_authenticated %}
+                    <li><i class="white-text material-icons prefix">search</i></li>
+                    <li>
+                        <div class="center row">
+                            <div class="col s12">
+                                <div class="row" id="topbarsearch">
+                                    <div class="input-field col s6 s12 white-text">
+                                        <form id="searchform" action="{% url "posts:post_list" %}" method="get">
+                                            <input type="text" placeholder="search for anything..." id="autocomplete-input" name="search" class="autocomplete white-text">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="{% url "accounts:profile" request.user %}"><i class="material-icons left">person</i>Profile</a></li>
+                    <li><a href="{% url "accounts:settings" request.user %}"><i class="material-icons left">settings</i>Settings</a></li>
+                    <li><a href="{% url "accounts:logout" %}"><i class="material-icons left">power_settings_new</i>Logout</a></li>
+                {% else %}
+                    <li><a href="{% url "accounts:login" %}">Login</a></li>
+                    <li><a href="{% url "accounts:registration" %}">Sign up</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<!-- Mobile navigation -->
+<ul class="sidenav" id="mobile-demo">
+    {% if request.user.is_authenticated %}
+                <li><a href="{% url "accounts:profile" request.user %}"><i class="material-icons left">person</i>Profile</a></li>
+        <li><a href="{% url "accounts:settings" request.user %}"><i class="material-icons left">settings</i>Settings</a></li>
+        <li><a href="{% url "accounts:logout" %}"><i class="material-icons left">power_settings_new</i>Logout</a></li>
+        <li>
+            <div class="center row">
+                <div class="col s12">
+                    <div class="row" id="topbarsearch">
+                        <div class="input-field col s6 s12 white-text">
+                            <form id="searchform" action="{% url "posts:post_list" %}" method="get">
+                                <input type="text" placeholder="search for anything..." id="autocomplete-input" name="search" class="autocomplete">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+    {% else %}
+        <li><a href="{% url "accounts:login" %}">Login</a></li>
+        <li><a href="{% url "accounts:registration" %}">Sign up</a></li>
+    {% endif %}
+</ul>
+
+<div class="row">
+    <div class="col l4 m2">
+
+    </div>
+    <div class="col l4 m8">
+    <br>
+        {% block body_middle %}
+
+        {% endblock %}
+    </div>
+    <div class="col l4 m2">
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        let elems = document.querySelector('.sidenav');
+        let instances = M.Sidenav.init(elems, {});
+    });
+</script>
+
+</body>
+</html>

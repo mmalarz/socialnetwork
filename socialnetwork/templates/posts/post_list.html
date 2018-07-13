@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Socialnetwork{% endblock %}
+
+{% block body_middle %}
+    <div class="card">
+        <div class="center-align">
+            <div class="card-content">
+                <span class="card-title">Hello {{ user.username }},</span>
+                <p>You can share your thoughts with other people by making posts. Create one now!</p>
+                <br>
+                <a href="{% url "posts:post_create" %}" class="btn btn-primary">Create post</a>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    {% for post in posts %}
+        <div class="card">
+            {% if post.image %}
+                <div class="card-image">
+                    <img class="card-img-top" src="{{ post.image.url }}" alt="Card image cap">
+                </div>
+            {% endif %}
+            <div class="card-content">
+                <div class="user-post">
+                    {% if post.user_profile.image %}
+                        <img src="{{ post.user_profile.image.url }}" height="50" width="50" class="circle"/>
+                    {% else %}
+                        <img src="{% static "images/user_icon.jpg" %}" height="50" width="50" class="circle"/>
+                    {% endif %}
+                </div>
+                <div class="user-post">
+                    <a href="{% url "accounts:profile" post.user %}" class="user-link">{{ post.user }}</a><br>
+                    <span class="grey-text text-darken-1 ultra-small user-date">{{ post.timestamp|date:"N j, Y, P" }}</span>
+                </div>
+                <div style="clear: both;"></div>
+                <span class="card-title">{{ post.title|truncatechars:30 }}</span>
+                <p class="post-text">{{ post.context|truncatechars:1000 }}</p>
+            </div>
+            <div class="card-action">
+                <a href="{% url "posts:post_detail" post.slug %}" class="btn btn-primary">More details</a>
+            </div>
+        </div>
+        <br>
+    {% endfor %}
+{% endblock %}

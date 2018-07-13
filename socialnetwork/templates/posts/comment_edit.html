@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load materializecss %}
+
+{% block title %}
+    Edit comment
+{% endblock %}
+
+{% block body_middle %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form|materializecss }}
+        <button class="btn">Edit comment</button>
+    </form>
+{% endblock %}

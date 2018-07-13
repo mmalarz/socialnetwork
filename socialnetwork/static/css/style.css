@@ -1,0 +1,54 @@
+body, html {
+    height: 100%;
+}
+
+.bg {
+    height: 100%;
+    background: url("../images/winter.jpg") no-repeat center;
+    background-size: cover;
+}
+
+#startpage-title {
+    margin-top: 17%;
+    font-weight: bold;
+    color: #CCC;
+}
+
+.startpage-link {
+    color: #EEEEEE;
+    font-size: 18px;
+    padding: 0 30px 0 30px;
+    border-left: 2px dotted #CCCCCC;
+}
+
+#startpage-link:hover {
+    color: #CC7832;
+}
+
+
+.logo {
+    margin-left: 10px;
+}
+
+@media (max-width: 500px) {
+    #small-logo {
+        font-size: 14px; !important;
+    }
+}
+
+.user-post {
+    float: left;
+}
+
+.user-link {
+    font-size: 20px;
+    margin-left: 15px;
+}
+
+.user-date {
+    margin-left: 10px;
+}
+
+.post-text {
+    text-align: justify;
+}

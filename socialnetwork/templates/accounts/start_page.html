@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Socialnetwork is a place to meet new people and share thoughts with them">
+    <meta name="keywords" content="socialnetwork, thoughts, new ideas, people, meetings, new friendships">
+
+    <title>Socialnetwork</title>
+    <link rel="Shortcut icon" href="{% static "images/people.png" %}">
+    <link rel="stylesheet" href="{% static "css/materialize.css" %}">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="bg">
+
+<div class="navbar-fixed">
+    <nav>
+        <div class="nav-wrapper">
+            <a href="{% url "posts:post_list" %}" class="brand-logo logo" id="small-logo"><i class="large material-icons">people</i>Socialnetwork</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+            <!-- Desktop navigation -->
+            <ul class="right hide-on-med-and-down">
+                <li><a href="{% url "accounts:login" %}">Login</a></li>
+                <li><a href="{% url "accounts:registration" %}">Sign up</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<!-- Mobile navigation -->
+<ul class="sidenav" id="mobile-demo">
+    <li><a href="{% url "accounts:login" %}">Login</a></li>
+    <li><a href="{% url "accounts:registration" %}">Sign up</a></li>
+</ul>
+
+<div class="row">
+    <div class="col s12 m12">
+        <h2 id="startpage-title" class="grey-text text-lighten-3 center-align">Join our socialnetwork today!</h2>
+        <div class="center-align">
+            <a href="{% url "accounts:login" %}" class="startpage-link">Login</a>
+            <a href="{% url "accounts:registration" %}" class="startpage-link">Registration</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        let elems = document.querySelector('.sidenav');
+        let instances = M.Sidenav.init(elems, {});
+    });
+</script>
+
+</body>
+</html>

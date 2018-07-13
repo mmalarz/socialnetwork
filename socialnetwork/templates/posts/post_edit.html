@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load materializecss %}
+{% block title %}Edit post{% endblock %}
+
+{% block body_middle %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|materializecss }}
+        <button type="submit" class="btn">Edit post</button>
+    </form>
+{% endblock %}
